@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
-using Xaminals.ViewModels;
+using BudgetManagementApp.ViewModels;
 
-namespace Xaminals.Views
+namespace BudgetManagementApp.Views
 {
     public partial class MonkeyDetailPage : ContentPage
     {

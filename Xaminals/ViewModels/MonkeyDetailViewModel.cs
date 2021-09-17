@@ -5,10 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
 using Xamarin.Forms;
-using Xaminals.Data;
-using Xaminals.Models;
+using BudgetManagementApp.Data;
+using BudgetManagementApp.Models;
 
-namespace Xaminals.ViewModels
+namespace BudgetManagementApp.ViewModels
 {
     public class MonkeyDetailViewModel : IQueryAttributable, INotifyPropertyChanged
     {

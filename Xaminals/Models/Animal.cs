@@ -1,4 +1,4 @@
-﻿namespace Xaminals.Models
+﻿namespace BudgetManagementApp.Models
 {
     public class Animal
     {

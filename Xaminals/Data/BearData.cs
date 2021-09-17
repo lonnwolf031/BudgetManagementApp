@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Xaminals.Models;
+using BudgetManagementApp.Models;
 
-namespace Xaminals.Data
+namespace BudgetManagementApp.Data
 {
     public static class BearData
     {

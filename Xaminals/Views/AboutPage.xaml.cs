@@ -2,7 +2,7 @@
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace Xaminals.Views
+namespace BudgetManagementApp.Views
 {
     public partial class AboutPage : ContentPage
     {

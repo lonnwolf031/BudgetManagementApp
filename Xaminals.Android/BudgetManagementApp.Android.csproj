@@ -97,9 +97,9 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xaminals\Xaminals.csproj">
+    <ProjectReference Include="..\Xaminals\BudgetManagementApp.csproj">
       <Project>{CD4DE9E8-2721-47F3-BA95-999B6F75FF27}</Project>
-      <Name>Xaminals</Name>
+      <Name>BudgetManagementApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

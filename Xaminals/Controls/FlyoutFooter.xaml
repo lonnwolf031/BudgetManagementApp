@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
-             x:Class="Xaminals.Controls.FlyoutFooter">
+             x:Class="BudgetManagementApp.Controls.FlyoutFooter">
     <StackLayout>
         <Label Text="Xaminals"
                TextColor="GhostWhite"

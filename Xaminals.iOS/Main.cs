@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Xaminals.iOS
+namespace BudgetManagementApp.iOS
 {
     public class Application
     {

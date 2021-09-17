@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Xaminals.Controls
+namespace BudgetManagementApp.Controls
 {
     public partial class FlyoutFooter : ContentView
     {

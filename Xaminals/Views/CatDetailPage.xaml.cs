@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Xamarin.Forms;
-using Xaminals.Data;
-using Xaminals.Models;
+using BudgetManagementApp.Data;
+using BudgetManagementApp.Models;
 
-namespace Xaminals.Views
+namespace BudgetManagementApp.Views
 {
     [QueryProperty(nameof(Name), "name")]
     public partial class CatDetailPage : ContentPage

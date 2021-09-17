@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Xaminals
+namespace BudgetManagementApp
 {
     public partial class App : Application
     {

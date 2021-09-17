@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Xamarin.Forms;
-using Xaminals.Models;
+using BudgetManagementApp.Models;
 
-namespace Xaminals.Views
+namespace BudgetManagementApp.Views
 {
     public partial class DogsPage : ContentPage
     {
