@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BudgetManagementApp.ViewModels;
-using BudgetManagementApp.Models;
+using MVVMbezettingApp.ViewModel;
+using MVVMbezettingApp.Model;
 
-namespace BudgetManagementApp
+namespace MVVMbezettingApp
 {
     class BudgetItemRepository
     {
