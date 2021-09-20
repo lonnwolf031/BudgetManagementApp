@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using BudgetManagementApp.Views;
 
 namespace BudgetManagementApp
 {
@@ -8,7 +9,7 @@ namespace BudgetManagementApp
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+           // MainPage = new AppShell();
         }
 
         protected override void OnStart()

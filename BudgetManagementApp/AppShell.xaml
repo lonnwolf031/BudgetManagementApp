@@ -6,8 +6,6 @@
        xmlns:views="clr-namespace:BudgetManagementApp.Views"
        x:Class="BudgetManagementApp.AppShell"
        x:Name="shell"
-       FlyoutBackgroundImage="photo.jpg"
-       FlyoutBackgroundImageAspect="AspectFill"
        FlyoutHeaderBehavior="CollapseOnScroll">
     <Shell.Resources>
         <Style x:Key="BaseStyle"
