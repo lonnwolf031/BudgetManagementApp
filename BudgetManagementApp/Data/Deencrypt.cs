@@ -3,7 +3,7 @@ using System.Text;
 
 namespace BudgetManagementApp.Data
 {
-    public class Salter
+    public class DeEncrypt
     {
         private const int SaltLength = 6;
 

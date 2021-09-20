@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
+using Dapper;
 using System.Threading.Tasks;
 using System.IO;
 
@@ -219,7 +220,7 @@ namespace BudgetManagementApp.Data
 
         public async Task<Account> ValidatePasswordAsync(string username, string password)
         {
-            using (var sqlConnection = new MySqlConnection(_connectionString))
+            using (var sqlConnection = new MySqlConnection(connectionString))
             {
                 sqlConnection.Open();
 
@@ -234,7 +235,7 @@ namespace BudgetManagementApp.Data
                     return null;
 
                 // TODO: Support old hashing methods.
-                var salter = new Salter();
+                var salter = new Deencrypt();
                 if (salter.ValidateHash(password, account.Password))
                     return account;
 
@@ -249,20 +250,14 @@ namespace BudgetManagementApp.Data
                 await connection.OpenAsync();
 
                 // Read all the userId's and userName's from the database, but don't send their password hashes.
-                var result = await connection.QueryAsync<UserDto>(@"
-SELECT 
-UserId,
-UserName
-FROM 
-User
-");
+                var result = await connection.QueryAsync<UserDto>(@"SELECT UserId, UserName FROM User");
                 return result;
             }
         }
 
         public async Task<Account> GetByIdAsync(long id)
         {
-            using (var sqlConnection = new MySqlConnection(_connectionString))
+            using (var sqlConnection = new MySqlConnection(connectionString))
             {
                 sqlConnection.Open();
 
@@ -276,5 +271,24 @@ User
                 return account;
             }
         }
+
+        public async Task<Account> GetByNameAsync(string address)
+        {
+            using (var sqlConnection = new MySqlConnection(_connectionString))
+            {
+                sqlConnection.Open();
+
+                var accounts = await sqlConnection.QueryAsync<Account>("SELECT * FROM hm_accounts WHERE accountaddress = @accountaddress", new
+                {
+                    accountaddress = address
+                });
+
+                var account = accounts.SingleOrDefault();
+
+                return account;
+            }
+        }
+
+
     }
 }
