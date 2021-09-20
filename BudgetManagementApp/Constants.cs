@@ -1,27 +1,10 @@
-﻿using System;
-using System.IO;
-
-namespace Todo
+﻿namespace BudgetManagementApp
 {
-    public static class Constants
-    {
-        public const string DatabaseFilename = "TodoSQLite.db3";
-
-        public const SQLite.SQLiteOpenFlags Flags =
-            // open the database in read/write mode
-            SQLite.SQLiteOpenFlags.ReadWrite |
-            // create the database if it doesn't exist
-            SQLite.SQLiteOpenFlags.Create |
-            // enable multi-threaded database access
-            SQLite.SQLiteOpenFlags.SharedCache;
-
-        public static string DatabasePath
-        {
-            get
-            {
-                var basePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                return Path.Combine(basePath, DatabaseFilename);
-            }
-        }
-    }
+	public static class Constants
+	{
+		public static readonly string EndpointUri = "<insert_documentdb_endpoint_uri_here>";
+		public static readonly string PrimaryKey = "<insert_documentdb_primary_key_here>";
+		public static readonly string DatabaseName = "BudgetItemsList";
+		public static readonly string CollectionName = "BudgetItems";
+	}
 }

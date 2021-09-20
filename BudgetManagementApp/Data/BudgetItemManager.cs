@@ -1,47 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BudgetManagementApp.Models;
 
 namespace BudgetManagementApp
 {
-    class BudgetItemManager
-    {
-        readonly BudgetItemRepository budgetItemRepository;
+	public class BudgetItemManager
+	{
+		IDocumentDBService documentDBService;
 
-        public BudgetItemManager()
-        {
-            budgetItemRepository = new BudgetItemRepository();
-        }
+		public BudgetItemManager(IDocumentDBService service)
+		{
+			documentDBService = service;
+		}
 
-        public bool Add(BudgetItem budgetItem)
-        {
-            //Search if the budgetItem exists and if not add the budgetItem.
-            if (budgetItemRepository.Search(budgetItem.Id) == null)
-            {
-                budgetItemRepository.Add(budgetItem);
-                return true;
-            }
-            return false;
-        }
+		public Task CreateDatabase(string databaseName)
+		{
+			return documentDBService.CreateDatabase(databaseName);
+		}
 
-        public bool Remove(int id)
-        {
-            //Search if the budgetItem exists and if exists remove the budgetItem.
-            BudgetItem budgetItem = budgetItemRepository.Search(id);
-            if (budgetItem != null)
-            {
-                budgetItemRepository.Remove(budgetItem);
-                return true;
-            }
-            return false;
-        }
+		public Task CreateDocumentCollection(string databaseName, string collectionName)
+		{
+			return documentDBService.CreateDocumentCollection(databaseName, collectionName);
+		}
 
-        public BudgetItem Search(int id)
-        {
-            return budgetItemRepository.Search(id);
-        }
-    }
+		public Task<List<BudgetItem>> GetBudgetItemsAsync()
+		{
+			return documentDBService.GetBudgetItemsAsync();
+		}
+
+		public Task SaveBudgetItemAsync(BudgetItem item, bool isNewItem = false)
+		{
+			return documentDBService.SaveBudgetItemAsync(item, isNewItem);
+		}
+
+		public Task DeleteBudgetItemAsync(BudgetItem item)
+		{
+			return documentDBService.DeleteBudgetItemAsync(item.Id);
+		}
+	}
 }
