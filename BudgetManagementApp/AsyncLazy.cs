@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Todo
+namespace BudgetManagementApp
 {
     public class AsyncLazy<T>
     {
