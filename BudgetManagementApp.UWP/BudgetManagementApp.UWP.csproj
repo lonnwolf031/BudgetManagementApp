@@ -188,7 +188,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xaminals\BudgetManagementApp.csproj">
+    <ProjectReference Include="..\BudgetManagementApp\BudgetManagementApp.csproj">
       <Project>{cd4de9e8-2721-47f3-ba95-999b6f75ff27}</Project>
       <Name>BudgetManagementApp</Name>
     </ProjectReference>
