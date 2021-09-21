@@ -4,6 +4,7 @@ using Xamarin.Forms;
 
 namespace XamlSamples
 {
+    // example for double binding
     public class HslViewModel : INotifyPropertyChanged
     {
         double hue, saturation, luminosity;
