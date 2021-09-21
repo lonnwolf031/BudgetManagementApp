@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using MVVMbezettingApp.Model;
+using BudgetManagementApp.Models;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace MVVMbezettingApp.ViewModel
+namespace BudgetManagementApp.ViewModel
 {
-    class DeelnemerViewModel : INotifyPropertyChanged
+    class DeelnemerViewModel //: INotifyPropertyChanged
     {
         /*
         #region Private Variables

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BudgetManagementApp.Models
 {
-    internal class BudgetItem
+    public class BudgetItem
     {
         public int Id { get; set; }
         public String Name { get; set; }

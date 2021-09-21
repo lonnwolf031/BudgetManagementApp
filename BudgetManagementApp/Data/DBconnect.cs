@@ -159,7 +159,7 @@ namespace BudgetManagementApp.Data
                 // using (var connection = await _connectionProvider.OpenAsync()) //Or however you get the connection
                 using (var conn = new MySqlConnection(connectionString))
                 {
-                    await conn.ExecuteAsync(sql, new { name, surname });
+                    await conn.ExecuteAsync(sql, new { name, Income });
                     tran.Complete();
                 }
             }
