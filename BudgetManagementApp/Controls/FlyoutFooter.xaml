@@ -4,7 +4,7 @@
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="BudgetManagementApp.Controls.FlyoutFooter">
     <StackLayout>
-        <Label Text="Xaminals"
+        <Label Text="© github.com/lonnwolf031"
                TextColor="GhostWhite"
                FontAttributes="Bold"
                HorizontalOptions="Center" />

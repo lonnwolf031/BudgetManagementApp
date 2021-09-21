@@ -23,25 +23,25 @@
         </Style>
         <Style TargetType="ShellItem"
                BasedOn="{StaticResource BaseStyle}" />
-        <Style x:Key="DomesticShell"
+        <Style x:Key="Shell1"
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
                     Value="#039BE6" />
         </Style>
-        <Style x:Key="MonkeysShell"
+        <Style x:Key="Shell2"
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
                     Value="#689F39" />
         </Style>
-        <Style x:Key="ElephantsShell"
+        <Style x:Key="Shell3"
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
                     Value="#ED3B3B" />
         </Style>
-        <Style x:Key="BearsShell"
+        <Style x:Key="Shell4"
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
@@ -51,7 +51,7 @@
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
             <Setter Property="Shell.BackgroundColor"
-                    Value="#96d1ff" />
+                    Value="#FFA701" />
         </Style>
         <Style x:Key="SettingsShell"
                TargetType="Element"
@@ -69,116 +69,19 @@
         <controls:FlyoutFooter />
     </Shell.FlyoutFooter>
 
-    <!-- Template for FlyoutHeader -->
-    <!-- Not required, as the FlyoutHeader is set above -->
-    <!--    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid BackgroundColor="Black"
-                  HeightRequest="200">
-                <Image Aspect="AspectFill" 
-                       Source="xamarinstore.jpg" 
-                       Opacity="0.6" />
-                <Label Text="Animals" 
-                       TextColor="White" 
-                       FontAttributes="Bold" 
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center" />
-            </Grid>            
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>-->
-
-    <!-- Template for FlyoutFooter -->
-    <!-- Not required, as the FlyoutFooter is set above -->
-    <!--<Shell.FlyoutFooterTemplate>
-        <DataTemplate>
-            <StackLayout>
-                <Label Text="Xaminals"
-                       TextColor="GhostWhite"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center" />
-                <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
-                       TextColor="GhostWhite"
-                       HorizontalOptions="Center" />
-            </StackLayout>
-        </DataTemplate>
-    </Shell.FlyoutFooterTemplate>-->
-
-    <!-- FlyoutContent -->
-    <!-- Not required, just an example -->
-    <!--<Shell.FlyoutContent>
-        <CollectionView BindingContext="{x:Reference shell}"
-                        IsGrouped="True"
-                        ItemsSource="{Binding FlyoutItems}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding Title}"
-                           TextColor="White"
-                           FontSize="Large" />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Shell.FlyoutContent>-->
-
-    <!-- Template for FlyoutContent -->
-    <!-- Not required, just an example -->
-    <!--<Shell.FlyoutContentTemplate>
-        <DataTemplate>
-            <CollectionView BindingContext="{x:Reference shell}"
-                            IsGrouped="True"
-                            ItemsSource="{Binding FlyoutItems}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Title}"
-                               TextColor="White"
-                               FontSize="Large" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </DataTemplate>
-    </Shell.FlyoutContentTemplate>-->
-
-    <!-- Template each FlyoutItem -->
-    <!--    <Shell.ItemTemplate>
-        <DataTemplate>
-            <Grid ColumnDefinitions="0.2*,0.8*">
-                <Image Source="{Binding Icon}"
-                       Margin="5"
-                       HeightRequest="45" />
-                <Label Grid.Column="1"
-                       Text="{Binding Title}"
-                       FontAttributes="Italic"
-                       VerticalTextAlignment="Center" /> 
-            </Grid>
-        </DataTemplate>
-    </Shell.ItemTemplate>-->
-
-    <!-- Template each MenuItem -->
-    <!--    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <Grid ColumnDefinitions="0.2*,0.8*">
-                <Image Source="{Binding Icon}"
-                       Margin="5"
-                       HeightRequest="45" />
-                <Label Grid.Column="1"
-                       Text="{Binding Text}"
-                       FontAttributes="Italic"
-                       VerticalTextAlignment="Center" /> 
-            </Grid>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>-->
-
     <FlyoutItem Route="animals"
                 FlyoutDisplayOptions="AsMultipleItems">
+        
         <Tab Title="Domestic"
              Route="domestic"
              Icon="paw.png">
             <ShellContent Route="cats"
-                          Style="{StaticResource DomesticShell}"
+                          Style="{StaticResource Shell1}"
                           Title="Cats"
                           Icon="cat.png"
                           ContentTemplate="{DataTemplate views:CatsPage}" />
             <ShellContent Route="dogs"
-                          Style="{StaticResource DomesticShell}"
+                          Style="{StaticResource Shell1}"
                           Title="Dogs"
                           Icon="dog.png"
                           ContentTemplate="{DataTemplate views:DogsPage}" />
@@ -186,14 +89,17 @@
         <Tab Title="Overview"
              Route="overview">
             <ShellContent Route="overviewhouseholdpage"
-                          Style="{StaticResource OverviewHouseholdShell}"
+                          Style="{StaticResource Shell1}"
                           Title="Household"
                           ContentTemplate="{DataTemplate views:OverviewHouseholdPage}" />
-            <ShellContent Route="dogs"
-                          Style="{StaticResource DomesticShell}"
-                          Title="Dogs"
-                          Icon="dog.png"
-                          ContentTemplate="{DataTemplate views:DogsPage}" />
+            <ShellContent Route="overviewyearpage"
+                          Style="{StaticResource Shell1}"
+                          Title="Year"
+                          ContentTemplate="{DataTemplate views:OverviewYearPage}" />
+            <ShellContent Route="overviewmonthpage"
+                          Style="{StaticResource Shell1}"
+                          Title="Year"
+                          ContentTemplate="{DataTemplate views:OverviewMonthPage}" />
         </Tab>
 
         <!--
@@ -208,17 +114,17 @@
                
         -->
         <ShellContent Route="monkeys"
-                      Style="{StaticResource MonkeysShell}"
+                      Style="{StaticResource Shell2}"
                       Title="Monkeys"
                       Icon="monkey.png"
                       ContentTemplate="{DataTemplate views:MonkeysPage}" />
         <ShellContent Route="elephants"
-                      Style="{StaticResource ElephantsShell}"
+                      Style="{StaticResource Shell3}"
                       Title="Elephants"
                       Icon="elephant.png"
                       ContentTemplate="{DataTemplate views:ElephantsPage}" />
         <ShellContent Route="bears"
-                      Style="{StaticResource BearsShell}"
+                      Style="{StaticResource Shell4}"
                       Title="Bears"
                       Icon="bear.png"
                       ContentTemplate="{DataTemplate views:BearsPage}" />

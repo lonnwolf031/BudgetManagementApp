@@ -23,16 +23,17 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    
+    <!--
     <Shell.SearchHandler>
-        <controls:AnimalSearchHandler Placeholder="Enter search term"
+               <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
                                       ItemTemplate="{StaticResource AnimalSearchTemplate}"
                                       Animals="{x:Static data:BearData.Bears}"
                                       SelectedItemNavigationTarget="{x:Type views:BearDetailPage}" />
     </Shell.SearchHandler>
-   
-    <CollectionView Margin="20"
+   -->
+
+        <CollectionView Margin="20"
                     ItemsSource="{x:Static data:BearData.Bears}"
                     ItemTemplate="{StaticResource AnimalTemplate}"
                     SelectionMode="Single"

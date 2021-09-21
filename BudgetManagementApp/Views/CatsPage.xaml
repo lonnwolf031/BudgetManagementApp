@@ -23,7 +23,7 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-
+    <!--
     <Shell.SearchHandler>
         <controls:AnimalSearchHandler Placeholder="Enter search term"
                                       ShowsResults="true"
@@ -31,7 +31,7 @@
                                       Animals="{x:Static data:CatData.Cats}"
                                       SelectedItemNavigationTarget="{x:Type views:CatDetailPage}" />
     </Shell.SearchHandler>
-    
+    -->
     <CollectionView Margin="20"
                     ItemsSource="{x:Static data:CatData.Cats}"
                     ItemTemplate="{StaticResource AnimalTemplate}"
