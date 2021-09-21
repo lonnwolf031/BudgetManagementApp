@@ -53,6 +53,12 @@
             <Setter Property="Shell.BackgroundColor"
                     Value="#96d1ff" />
         </Style>
+        <Style x:Key="SettingsShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#546DFE" />
+        </Style>
     </Shell.Resources>
 
     <Shell.FlyoutHeader>
@@ -177,6 +183,18 @@
                           Icon="dog.png"
                           ContentTemplate="{DataTemplate views:DogsPage}" />
         </Tab>
+        <Tab Title="Overview"
+             Route="overview">
+            <ShellContent Route="overviewhouseholdpage"
+                          Style="{StaticResource OverviewHouseholdShell}"
+                          Title="Household"
+                          ContentTemplate="{DataTemplate views:OverviewHouseholdPage}" />
+            <ShellContent Route="dogs"
+                          Style="{StaticResource DomesticShell}"
+                          Title="Dogs"
+                          Icon="dog.png"
+                          ContentTemplate="{DataTemplate views:DogsPage}" />
+        </Tab>
 
         <!--
 
@@ -204,6 +222,10 @@
                       Title="Bears"
                       Icon="bear.png"
                       ContentTemplate="{DataTemplate views:BearsPage}" />
+        <ShellContent Route="settings"
+                      Style="{StaticResource SettingsShell}"
+                      Title="Settings"                      
+                      ContentTemplate="{DataTemplate views:SettingsPage}" />
     </FlyoutItem>
 
     <ShellContent Route="about"

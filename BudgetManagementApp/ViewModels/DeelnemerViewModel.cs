@@ -13,6 +13,7 @@ namespace MVVMbezettingApp.ViewModel
 {
     class DeelnemerViewModel : INotifyPropertyChanged
     {
+        /*
         #region Private Variables
         private readonly Deelnemer dlnObject;
         private readonly ObservableCollection<Deelnemer> deelnemers;
@@ -185,5 +186,6 @@ namespace MVVMbezettingApp.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        */
     }
 }

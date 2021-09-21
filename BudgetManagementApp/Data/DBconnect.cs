@@ -6,6 +6,7 @@ using Dapper;
 using System.Threading.Tasks;
 using System.IO;
 using System.Transactions;
+using BudgetManagementApp.Models;
 
 namespace BudgetManagementApp.Data
 {
@@ -30,7 +31,7 @@ namespace BudgetManagementApp.Data
 
 
 
-
+        /*
         //Backup
         public void Backup()
         {
@@ -132,32 +133,39 @@ namespace BudgetManagementApp.Data
                 return null;
             }
         }
+        */
 
-        public async Task<IEnumerable<UserDto>> GetAll()
+        public async Task<IEnumerable<Person>> GetAllPeople()
         {
-            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            using (var connection = new MySqlConnection(connectionString))
             {
                 await connection.OpenAsync();
 
                 // Read all the userId's and userName's from the database, but don't send their password hashes.
-                var result = await connection.QueryAsync<UserDto>(@"SELECT UserId, UserName FROM User");
+                var result = await connection.QueryAsync<Person>(@"SELECT UserId, UserName FROM User");
                 return result;
             }
         }
 
-        public async Task AddPerson(string name, string surname)
+        public async Task AddPerson(Person person)
         {
+            int id = person.Id;
+            String name = person.Name;
+            double Income = person.MonthlyIncome;
             const string sql = "insert into Persons(Name, Surname) values(@Name, @Surname)";
 
             using (var tran = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-           // using (var connection = await _connectionProvider.OpenAsync()) //Or however you get the connection
-            using (var conn = new MySqlConnection(connectionString))
             {
-                await conn.ExecuteAsync(sql, new { name, surname });
-                tran.Complete();
+                // using (var connection = await _connectionProvider.OpenAsync()) //Or however you get the connection
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    await conn.ExecuteAsync(sql, new { name, surname });
+                    tran.Complete();
+                }
             }
         }
 
+        /*
         public async Task<Account> GetByIdAsync(long id)
         {
             using (var sqlConnection = new MySqlConnection(connectionString))
@@ -177,7 +185,7 @@ namespace BudgetManagementApp.Data
 
         public async Task<Account> GetByNameAsync(string address)
         {
-            using (var sqlConnection = new MySqlConnection(_connectionString))
+            using (var sqlConnection = new MySqlConnection(connectionString))
             {
                 sqlConnection.Open();
 
@@ -222,6 +230,7 @@ namespace BudgetManagementApp.Data
                 }
             }
         }
+        */
 
 
     }
