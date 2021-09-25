@@ -18,9 +18,12 @@
                              VerticalOptions="Center">
                     <ContentView Padding="0,40,0,40" 
                                  VerticalOptions="FillAndExpand">
-                        <Image Source="xamarin_logo.png" 
-                               VerticalOptions="Center" 
-                               HeightRequest="64" />
+                        <Label Text="About this app"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           TextColor="Aqua" />
+
                     </ContentView>
                 </StackLayout>
             </StackLayout>
