@@ -9,7 +9,9 @@ namespace BudgetManagementApp
 {
     public partial class AppShell : Shell
     {
-        public Dictionary<string, Type> Routes { get; private set; } = new Dictionary<string, Type>();
+        public Dictionary<string, Type> 
+      
+      s { get; private set; } = new Dictionary<string, Type>();
         public ICommand HelpCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
         public AppShell()
