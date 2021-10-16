@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BudgetManagementApp.Models
 {
   internal class Predictions
   {
+    public List<Prediction> predictions { get; }
+    public Predictions()
+    {
+      predictions = new List<Prediction>();
+    }
   }
   public class Prediction
   {
-    private int id;
-    private DateTime startDate;
-    private int source;
-    private bool increment;
-    private float amount;
+    public int id { get; }
+    public DateTime startDate { get; set; }
+    public int source { get; set; }
+    public bool increment { get; set; }
+    public float amount { get; set; }
   }
 }

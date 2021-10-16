@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BudgetManagementApp.Models
 {
   public class Balances
   {
-    private List<Balance> balances;
+    public List<Balance> balances { get; }
+    public Balances()
+    {
+      balances = new List<Balance>();
+    }
   }
 
   public class Balance
   {
-    private int id;
-    private string name;
-    private DateTime latestUpdate;
-    private float expectedBalance;
-    private float realBalance;
+    public int id { get; }
+    public string name { get; set; }
+    public DateTime latestUpdate { get; set; }
+    public float expectedBalance { get; set; }
+    public float realBalance { get; set; }
+
   }
 }

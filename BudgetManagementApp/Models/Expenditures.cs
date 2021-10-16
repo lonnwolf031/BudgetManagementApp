@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BudgetManagementApp.Models
 {
   internal class Expenditures
   {
-    private List<Expenditure> expenditures;
+    public List<Expenditure> expenditures { get; }
+    public Expenditures()
+    {
+      expenditures = new List<Expenditure>();
+    }
   }
   public class Expenditure
   {
-    private int id;
-    private DateTime date;
-    private int repeatDays;
-    private string expenditureSource;
-    private float expectedAmount;
-    private float realAmount;
+    public int id { get; }
+    public DateTime date { get; set; }
+    public int repeatDays { get; set; }
+    public string expenditureSourc { get; set; }
+    public float expectedAmount { get; set; }
+    public float realAmount { get; set; }
   }
 }
