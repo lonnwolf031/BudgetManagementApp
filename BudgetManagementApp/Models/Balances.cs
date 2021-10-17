@@ -1,14 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Models
 {
-  public class Balances
+
+  public static class Balances
   {
-    public List<Balance> balances { get; }
-    public Balances()
+    static Balances()
     {
-      balances = new List<Balance>();
+    }
+
+    public static ObservableCollection<Balance> getBalances()
+    {
+      ObservableCollection<Balance> balances = new ObservableCollection<Balance>()
+      {
+        new Balance(){ name = "foo"},
+         new Balance(){ name = "test"}
+      };
+      return balances;
     }
   }
 
@@ -19,6 +28,5 @@ namespace BudgetManagementApp.Models
     public DateTime latestUpdate { get; set; }
     public float expectedBalance { get; set; }
     public float realBalance { get; set; }
-
   }
 }

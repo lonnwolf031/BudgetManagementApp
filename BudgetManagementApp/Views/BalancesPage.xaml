@@ -4,14 +4,10 @@
                       xmlns:data="clr-namespace:BudgetManagementApp.Data"
              x:Class="BudgetManagementApp.Views.BalancesPage"
              Title="Balances">
-    <!--<ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>-->
-  <Label Text="Test"></Label>
+
+  
+  
+  
   <!--<CollectionView Margin="20"
                     ItemsSource="{x:Static data:CatData.Cats}"
                     ItemTemplate="{StaticResource AnimalTemplate}"

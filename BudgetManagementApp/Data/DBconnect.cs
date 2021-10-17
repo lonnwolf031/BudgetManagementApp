@@ -1,6 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-
-namespace BudgetManagementApp.data
+﻿namespace BudgetManagementApp.data
 {
   class dbconnect
   {
@@ -9,11 +7,11 @@ namespace BudgetManagementApp.data
     //constructor
     public dbconnect()
     {
-      var connectionstringbuilder = new MySqlConnectionStringBuilder();
-      connectionstringbuilder.Server = Constants.server;
-      connectionstringbuilder.UserID = Constants.uid;
-      connectionstringbuilder.Password = Constants.password;
-      connectionstringbuilder.Database = Constants.database;
+      //var connectionstringbuilder = new MySqlConnectionStringBuilder();
+      //connectionstringbuilder.Server = Constants.server;
+      //connectionstringbuilder.UserID = Constants.uid;
+      //connectionstringbuilder.Password = Constants.password;
+      //connectionstringbuilder.Database = Constants.database;
       //server = constants.server,
       //userid = constants.uid,
       //password = constants.password,
@@ -21,7 +19,7 @@ namespace BudgetManagementApp.data
       // certificatefile = @"<path_to_the_file>\client.pfx",
       //certificatepassword = "<password_for_the_cert>"
 
-      connectionstring = connectionstringbuilder.ToString();
+      // connectionstring = connectionstringbuilder.ToString();
     }
 
 
