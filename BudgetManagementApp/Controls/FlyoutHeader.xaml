@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BudgetManagementApp.Controls.FlyoutHeader"
              HeightRequest="200">
-    <Grid BackgroundColor="Black">
+    <Grid BackgroundColor="Purple">
+    <!--<Image Aspect="AspectFill" 
+               Source="xamarinstore.jpg" 
+               Opacity="0.6" />-->
 
-        <Label Text="Personal budget management" 
-               TextColor="White" 
+    <Label Text="Personal budget management" 
+               TextColor="Black" 
                FontAttributes="Bold" 
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center" />

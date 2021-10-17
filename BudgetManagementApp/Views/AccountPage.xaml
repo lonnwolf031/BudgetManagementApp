@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BudgetManagementApp.Views.AccountPage">
-    <ContentPage.Content>
+             xmlns:data="clr-namespace:BudgetManagementApp.Data"
+             x:Class="BudgetManagementApp.Views.AccountPage"
+             Title="Account">
+    <!--<ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
-    </ContentPage.Content>
+    </ContentPage.Content>-->
+  <StackLayout Margin="20,35,20,25">
+    <Label Text="Enter database connection data:" />
+    <Entry x:Name="entryServer" Placeholder="Enter server address" />
+    <Entry x:Name="entryUserID" Placeholder="Enter user ID" />
+    <Entry x:Name="entryPwc" Placeholder="Enter password" />
+    <Entry x:Name="entryDb" Placeholder="Enter database name" />
+    <Button Text="Click to connect"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="OnButtonConnectClicked" />
+  </StackLayout>
+
+
+  <!--<CollectionView Margin="20"
+                    ItemsSource="{x:Static data:CatData.Cats}"
+                    ItemTemplate="{StaticResource AnimalTemplate}"
+                    SelectionMode="Single"
+                    SelectionChanged="OnCollectionViewSelectionChanged" />-->
 </ContentPage>

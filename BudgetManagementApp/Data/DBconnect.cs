@@ -1,236 +1,231 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
-using Dapper;
-using System.Threading.Tasks;
-using System.IO;
-using System.Transactions;
-using BudgetManagementApp.Models;
+﻿using MySql.Data.MySqlClient;
 
-namespace BudgetManagementApp.Data
+namespace BudgetManagementApp.data
 {
-    class DBConnect
+  class dbconnect
+  {
+    private string connectionstring;
+
+    //constructor
+    public dbconnect()
     {
-        private string connectionString;
+      var connectionstringbuilder = new MySqlConnectionStringBuilder();
+      connectionstringbuilder.Server = Constants.server;
+      connectionstringbuilder.UserID = Constants.uid;
+      connectionstringbuilder.Password = Constants.password;
+      connectionstringbuilder.Database = Constants.database;
+      //server = constants.server,
+      //userid = constants.uid,
+      //password = constants.password,
+      //database = constants.database
+      // certificatefile = @"<path_to_the_file>\client.pfx",
+      //certificatepassword = "<password_for_the_cert>"
 
-        //Constructor
-        public DBConnect()
-        {
-            var connectionStringBuilder = new MySqlConnectionStringBuilder
-            {
-                Server = Constants.server,
-                UserID = Constants.uid,
-                Password = Constants.password,
-                Database = Constants.database
-               // CertificateFile = @"<Path_To_The_File>\client.pfx",
-                //CertificatePassword = "<Password_For_The_Cert>"
-            };
-            connectionString = connectionStringBuilder.ToString();
-        }
+      connectionstring = connectionstringbuilder.ToString();
+    }
 
 
-
-        /*
-        //Backup
-        public void Backup()
-        {
-            try
-            {
-                DateTime Time = DateTime.Now;
-                int year = Time.Year;
-                int month = Time.Month;
-                int day = Time.Day;
-                int hour = Time.Hour;
-                int minute = Time.Minute;
-                int second = Time.Second;
-                int millisecond = Time.Millisecond;
-
-                //Save file to C:\ with the current date as a filename
-                string path;
-                path = "C:\\MySqlBackup" + year + "-" + month + "-" + day +
-            "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
-                StreamWriter file = new StreamWriter(path);
-
-
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysqldump";
-                psi.RedirectStandardInput = false;
-                psi.RedirectStandardOutput = true;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
-                    uid, password, server, database);
-                psi.UseShellExecute = false;
-
-                Process process = Process.Start(psi);
-
-                string output;
-                output = process.StandardOutput.ReadToEnd();
-                file.WriteLine(output);
-                process.WaitForExit();
-                file.Close();
-                process.Close();
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show("Error , unable to backup!");
-            }
-        }
-
-        //Restore
-        public void Restore()
-        {
-            try
-            {
-                //Read file from C:\
-                string path;
-                path = "C:\\MySqlBackup.sql";
-                StreamReader file = new StreamReader(path);
-                string input = file.ReadToEnd();
-                file.Close();
-
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = "mysql";
-                psi.RedirectStandardInput = true;
-                psi.RedirectStandardOutput = false;
-                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
-                    uid, password, server, database);
-                psi.UseShellExecute = false;
-
-
-                Process process = Process.Start(psi);
-                process.StandardInput.WriteLine(input);
-                process.StandardInput.Close();
-                process.WaitForExit();
-                process.Close();
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show("Error , unable to Restore!");
-            }
-        }
-
-        public async Task<Account> ValidatePasswordAsync(string username, string password)
-        {
-            using (var sqlConnection = new MySqlConnection(connectionString))
-            {
-                sqlConnection.Open();
-
-                var accounts = await sqlConnection.QueryAsync<Account>("SELECT * FROM hm_accounts WHERE accountaddress = @accountaddress", new
-                {
-                    accountaddress = username
-                });
-
-                var account = accounts.SingleOrDefault();
-
-                if (account == null)
-                    return null;
-
-                // TODO: Support old hashing methods.
-                var salter = new Deencrypt();
-                if (salter.ValidateHash(password, account.Password))
-                    return account;
-
-                return null;
-            }
-        }
-        */
-
-        public async Task<IEnumerable<Person>> GetAllPeople()
-        {
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                await connection.OpenAsync();
-
-                // Read all the userId's and userName's from the database, but don't send their password hashes.
-                var result = await connection.QueryAsync<Person>(@"SELECT UserId, UserName FROM User");
-                return result;
-            }
-        }
-
-        public async Task AddPerson(Person person)
-        {
-            int id = person.Id;
-            String name = person.Name;
-            double Income = person.MonthlyIncome;
-            const string sql = "insert into Persons(Name, Surname) values(@Name, @Surname)";
-
-            using (var tran = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                // using (var connection = await _connectionProvider.OpenAsync()) //Or however you get the connection
-                using (var conn = new MySqlConnection(connectionString))
-                {
-                    await conn.ExecuteAsync(sql, new { name, Income });
-                    tran.Complete();
-                }
-            }
-        }
-
-   
-
-    
 
     /*
-    public async Task<Account> GetByIdAsync(long id)
+    //backup
+    public void backup()
     {
-        using (var sqlConnection = new MySqlConnection(connectionString))
+        try
         {
-            sqlConnection.Open();
+            datetime time = datetime.now;
+            int year = time.year;
+            int month = time.month;
+            int day = time.day;
+            int hour = time.hour;
+            int minute = time.minute;
+            int second = time.second;
+            int millisecond = time.millisecond;
 
-            var accounts = await sqlConnection.QueryAsync<Account>("SELECT * FROM hm_accounts WHERE accountid = @accountid", new
+            //save file to c:\ with the current date as a filename
+            string path;
+            path = "c:\\mysqlbackup" + year + "-" + month + "-" + day +
+        "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
+            streamwriter file = new streamwriter(path);
+
+
+            processstartinfo psi = new processstartinfo();
+            psi.filename = "mysqldump";
+            psi.redirectstandardinput = false;
+            psi.redirectstandardoutput = true;
+            psi.arguments = string.format(@"-u{0} -p{1} -h{2} {3}",
+                uid, password, server, database);
+            psi.useshellexecute = false;
+
+            process process = process.start(psi);
+
+            string output;
+            output = process.standardoutput.readtoend();
+            file.writeline(output);
+            process.waitforexit();
+            file.close();
+            process.close();
+        }
+        catch (ioexception ex)
+        {
+            messagebox.show("error , unable to backup!");
+        }
+    }
+
+    //restore
+    public void restore()
+    {
+        try
+        {
+            //read file from c:\
+            string path;
+            path = "c:\\mysqlbackup.sql";
+            streamreader file = new streamreader(path);
+            string input = file.readtoend();
+            file.close();
+
+            processstartinfo psi = new processstartinfo();
+            psi.filename = "mysql";
+            psi.redirectstandardinput = true;
+            psi.redirectstandardoutput = false;
+            psi.arguments = string.format(@"-u{0} -p{1} -h{2} {3}",
+                uid, password, server, database);
+            psi.useshellexecute = false;
+
+
+            process process = process.start(psi);
+            process.standardinput.writeline(input);
+            process.standardinput.close();
+            process.waitforexit();
+            process.close();
+        }
+        catch (ioexception ex)
+        {
+            messagebox.show("error , unable to restore!");
+        }
+    }
+
+    public async task<account> validatepasswordasync(string username, string password)
+    {
+        using (var sqlconnection = new mysqlconnection(connectionstring))
+        {
+            sqlconnection.open();
+
+            var accounts = await sqlconnection.queryasync<account>("select * from hm_accounts where accountaddress = @accountaddress", new
+            {
+                accountaddress = username
+            });
+
+            var account = accounts.singleordefault();
+
+            if (account == null)
+                return null;
+
+            // todo: support old hashing methods.
+            var salter = new deencrypt();
+            if (salter.validatehash(password, account.password))
+                return account;
+
+            return null;
+        }
+    }
+    */
+
+    //public async task<ienumerable<person>> getallpeople()
+    //{
+    //  using (var connection = new mysqlconnection(connectionstring))
+    //  {
+    //    await connection.openasync();
+
+    //    // read all the userid's and username's from the database, but don't send their password hashes.
+    //    var result = await connection.queryasync<person>(@"select userid, username from user");
+    //    return result;
+    //  }
+    //}
+
+    //public async task addperson(person person)
+    //{
+    //  int id = person.id;
+    //  string name = person.name;
+    //  double income = person.monthlyincome;
+    //  const string sql = "insert into persons(name, surname) values(@name, @surname)";
+
+    //  using (var tran = new transactionscope(transactionscopeasyncflowoption.enabled))
+    //  {
+    //    // using (var connection = await _connectionprovider.openasync()) //or however you get the connection
+    //    using (var conn = new mysqlconnection(connectionstring))
+    //    {
+    //      await conn.executeasync(sql, new { name, income });
+    //      tran.complete();
+    //    }
+    //  }
+    //}
+
+
+
+
+
+    /*
+    public async task<account> getbyidasync(long id)
+    {
+        using (var sqlconnection = new mysqlconnection(connectionstring))
+        {
+            sqlconnection.open();
+
+            var accounts = await sqlconnection.queryasync<account>("select * from hm_accounts where accountid = @accountid", new
             {
                 accountid = id
             });
 
-            var account = accounts.SingleOrDefault();
+            var account = accounts.singleordefault();
 
             return account;
         }
     }
 
-    public async Task<Account> GetByNameAsync(string address)
+    public async task<account> getbynameasync(string address)
     {
-        using (var sqlConnection = new MySqlConnection(connectionString))
+        using (var sqlconnection = new mysqlconnection(connectionstring))
         {
-            sqlConnection.Open();
+            sqlconnection.open();
 
-            var accounts = await sqlConnection.QueryAsync<Account>("SELECT * FROM hm_accounts WHERE accountaddress = @accountaddress", new
+            var accounts = await sqlconnection.queryasync<account>("select * from hm_accounts where accountaddress = @accountaddress", new
             {
                 accountaddress = address
             });
 
-            var account = accounts.SingleOrDefault();
+            var account = accounts.singleordefault();
 
             return account;
         }
     }
 
-    public async Task<List<Artist>> GetAllAsync()
+    public async task<list<artist>> getallasync()
     {
         using (
-            SqlConnection conn =
-                new SqlConnection(Conn.String))
+            sqlconnection conn =
+                new sqlconnection(conn.string))
         {
-            await conn.OpenAsync();
+            await conn.openasync();
 
-            using (var multi = await conn.QueryMultipleAsync(StoredProcs.Artists.GetAll, commandType: CommandType.StoredProcedure))
+            using (var multi = await conn.querymultipleasync(storedprocs.artists.getall, commandtype: commandtype.storedprocedure))
             {
-                var Artists = multi.Read<Artist, AlbumArtist, Artist>((artist, albumArtist) =>
+                var artists = multi.read<artist, albumartist, artist>((artist, albumartist) =>
                 {
-                    artist.albumArtist = albumArtist;
+                    artist.albumartist = albumartist;
                     return artist;
-                }).ToList();
+                }).tolist();
 
-                var albums = multi.Read<Album, AlbumArtist, Album>(
-                (album, albumArtist, album) =>
+                var albums = multi.read<album, albumartist, album>(
+                (album, albumartist, album) =>
                 {
-                    album.albumArtist = album;
+                    album.albumartist = album;
                     return albums;
-                }).ToList();
+                }).tolist();
 
 
-                conn.Close();
+                conn.close();
 
-                return Artists;
+                return artists;
             }
         }
     }

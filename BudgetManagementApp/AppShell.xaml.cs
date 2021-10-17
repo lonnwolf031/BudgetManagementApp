@@ -23,15 +23,20 @@ namespace BudgetManagementApp
 
     void RegisterRoutes()
     {
-      Routes.Add("settings", typeof(SettingsPage));
-      Routes.Add("overviewpage", typeof(OverviewPage));
-      Routes.Add("overviewhouseholdpage", typeof(OverviewHouseholdPage));
-      Routes.Add("overviewyearpage", typeof(OverviewYearPage));
-      //Routes.Add("monkeydetails", typeof(MonkeyDetailPage));
-      Routes.Add("beardetails", typeof(BearDetailPage));
-      Routes.Add("catdetails", typeof(CatDetailPage));
-      Routes.Add("dogdetails", typeof(DogDetailPage));
-      Routes.Add("elephantdetails", typeof(ElephantDetailPage));
+      Routes.Add("Account", typeof(AccountPage));
+      Routes.Add("Balances", typeof(BalancesPage));
+      Routes.Add("Incomes", typeof(IncomesPage));
+      Routes.Add("Expenditures", typeof(ExpendituresPage));
+      Routes.Add("Predictions", typeof(PredictionsPage));
+      Routes.Add("Settings", typeof(SettingsPage));
+      Routes.Add("Overview", typeof(OverviewPage));
+      //Routes.Add("overviewhouseholdpage", typeof(OverviewHouseholdPage));
+      //Routes.Add("overviewyearpage", typeof(OverviewYearPage));
+      ////Routes.Add("monkeydetails", typeof(MonkeyDetailPage));
+      //Routes.Add("beardetails", typeof(BearDetailPage));
+      //Routes.Add("catdetails", typeof(CatDetailPage));
+      //Routes.Add("dogdetails", typeof(DogDetailPage));
+      //Routes.Add("elephantdetails", typeof(ElephantDetailPage));
 
       foreach (var item in Routes)
       {

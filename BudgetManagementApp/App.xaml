@@ -6,7 +6,7 @@
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
 
-        <DataTemplate x:Key="BudgetItemTemplate">
+        <!--<DataTemplate x:Key="BudgetItemTemplate">
             <Grid Padding="10"
                   RowDefinitions="Auto,Auto"
                   ColumnDefinitions="Auto,Auto">
@@ -29,7 +29,7 @@
                        FontAttributes="Italic" 
                        VerticalOptions="End" />
             </Grid>
-        </DataTemplate>
+        </DataTemplate>-->
 
         <DataTemplate x:Key="AnimalTemplate">
             <Grid Padding="10"
