@@ -1,14 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Models
 {
-  internal class Predictions
+  public static class Predictions
   {
-    public List<Prediction> predictions { get; }
-    public Predictions()
+    static Predictions()
     {
-      predictions = new List<Prediction>();
+    }
+
+    public static ObservableCollection<Prediction> getPredictions()
+    {
+      ObservableCollection<Prediction> predictions = new ObservableCollection<Prediction>()
+      {
+        new Prediction(){ name = "foo"},
+         new Prediction(){ name = "test"}
+      };
+      return predictions;
     }
   }
   public class Prediction

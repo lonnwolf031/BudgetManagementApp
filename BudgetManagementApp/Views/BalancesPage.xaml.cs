@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-
+﻿using BudgetManagementApp.ViewModels;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,7 +24,7 @@ namespace BudgetManagementApp.Views
 
     private void loadView()
     {
-      ListView listView = new ListView() { SeparatorVisibility = SeparatorVisibility.None, ItemsSource = HomeViewModel.lights };
+      ListView listView = new ListView() { SeparatorVisibility = SeparatorVisibility.None, ItemsSource = BalancesViewModel.balances };
       listView.ItemTemplate = new DataTemplate(typeof(EntryCell));
       listView.ItemTemplate.SetBinding(EntryCell.LabelProperty, "comment");
       listView.ItemTemplate.SetBinding(EntryCell.TextProperty, "name");

@@ -1,14 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Models
 {
-  internal class Incomes
+  public static class Incomes
   {
-    private List<Income> incomes { get; }
-    public Incomes()
+    static Incomes()
     {
-      incomes = new List<Income>();
+    }
+
+    public static ObservableCollection<Income> getIncomes()
+    {
+      ObservableCollection<Income> incomes = new ObservableCollection<Income>()
+      {
+        new Income(){ name = "foo"},
+         new Income(){ name = "test"}
+      };
+      return incomes;
     }
   }
 

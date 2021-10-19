@@ -1,14 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Models
 {
-  internal class Expenditures
+  public static class Expenditures
   {
-    public List<Expenditure> expenditures { get; }
-    public Expenditures()
+    static Expenditures()
     {
-      expenditures = new List<Expenditure>();
+    }
+
+    public static ObservableCollection<Expenditure> getExpenditures()
+    {
+      ObservableCollection<Expenditure> expenditures = new ObservableCollection<Expenditure>()
+      {
+        new Expenditure(){ name = "foo"},
+         new Expenditure(){ name = "test"}
+      };
+      return expenditures;
     }
   }
   public class Expenditure
