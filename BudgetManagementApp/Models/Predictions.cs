@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
@@ -13,18 +15,73 @@ namespace BudgetManagementApp.Models
     {
       ObservableCollection<Prediction> predictions = new ObservableCollection<Prediction>()
       {
-        new Prediction(){ name = "foo"},
-         new Prediction(){ name = "test"}
+        new Prediction(){ Id = 5},
+         new Prediction(){ Id = 2}
       };
       return predictions;
     }
   }
-  public class Prediction
+
+  public class Prediction : INotifyPropertyChanged
   {
-    public int id { get; }
-    public DateTime startDate { get; set; }
-    public int source { get; set; }
-    public bool increment { get; set; }
-    public float amount { get; set; }
+    public int id;
+    public DateTime startDate;
+    public int source;
+    public bool increment;
+    public float amount;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public int Id
+    {
+      get { return id; }
+      set
+      {
+        id = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public DateTime StartDate
+    {
+      get { return startDate; }
+      set
+      {
+        startDate = value;
+        OnPropertyChanged();
+      }
+    }
+    public int Source
+    {
+      get { return source; }
+      set
+      {
+        source = value;
+        OnPropertyChanged();
+      }
+    }
+    public bool Increment
+    {
+      get { return increment; }
+      set
+      {
+        increment = value;
+        OnPropertyChanged();
+      }
+    }
+
+    void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      var handler = PropertyChanged;
+      if (handler != null)
+      {
+        handler(this, new PropertyChangedEventArgs(propertyName));
+      }
+    }
   }
+
+
+
+
+
 }

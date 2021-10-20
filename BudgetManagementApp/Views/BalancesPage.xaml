@@ -5,12 +5,14 @@
              x:Class="BudgetManagementApp.Views.BalancesPage"
              Title="Balances">
 
+  <ContentPage.Content>
+    <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static local:BalancesViewModel.balances}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <SwitchCell Text="{Binding name}" On="{Binding isOn}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
   
-  
-  
-  <!--<CollectionView Margin="20"
-                    ItemsSource="{x:Static data:CatData.Cats}"
-                    ItemTemplate="{StaticResource AnimalTemplate}"
-                    SelectionMode="Single"
-                    SelectionChanged="OnCollectionViewSelectionChanged" />-->
 </ContentPage>

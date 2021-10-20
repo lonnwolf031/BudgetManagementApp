@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
@@ -13,19 +15,92 @@ namespace BudgetManagementApp.Models
     {
       ObservableCollection<Expenditure> expenditures = new ObservableCollection<Expenditure>()
       {
-        new Expenditure(){ name = "foo"},
-         new Expenditure(){ name = "test"}
+        new Expenditure(){ ExpenditureSource = "foo"},
+         new Expenditure(){ ExpenditureSource = "test"}
       };
       return expenditures;
     }
   }
-  public class Expenditure
+
+  public class Expenditure : INotifyPropertyChanged
   {
-    public int id { get; }
-    public DateTime date { get; set; }
-    public int repeatDays { get; set; }
-    public string expenditureSourc { get; set; }
-    public float expectedAmount { get; set; }
-    public float realAmount { get; set; }
+    private int id;
+    private DateTime date;
+    private int repeatDays;
+    private string expenditureSource;
+    private float expectedAmount;
+    private float realAmount;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public int Id
+    {
+      get { return id; }
+      set
+      {
+        id = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public DateTime Date
+    {
+      get { return date; }
+      set
+      {
+        date = value;
+        OnPropertyChanged();
+      }
+    }
+    public int RepeatDays
+    {
+      get { return repeatDays; }
+      set
+      {
+        repeatDays = value;
+        OnPropertyChanged();
+      }
+    }
+    public string ExpenditureSource
+    {
+      get { return expenditureSource; }
+      set
+      {
+        expenditureSource = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public float ExpectedAmount
+    {
+      get { return expectedAmount; }
+      set
+      {
+        expectedAmount = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public float RealAmount
+    {
+      get { return realAmount; }
+      set
+      {
+        realAmount = value;
+        OnPropertyChanged();
+      }
+    }
+
+    void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      var handler = PropertyChanged;
+      if (handler != null)
+      {
+        handler(this, new PropertyChangedEventArgs(propertyName));
+      }
+    }
   }
+
+
+
 }

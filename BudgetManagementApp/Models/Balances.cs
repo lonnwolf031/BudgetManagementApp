@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
@@ -14,19 +16,76 @@ namespace BudgetManagementApp.Models
     {
       ObservableCollection<Balance> balances = new ObservableCollection<Balance>()
       {
-        new Balance(){ name = "foo"},
-         new Balance(){ name = "test"}
+        new Balance(){ Name = "foo"},
+         new Balance(){ Name = "test"}
       };
       return balances;
     }
   }
 
-  public class Balance
+  public class Balance : INotifyPropertyChanged
   {
-    public int id { get; }
-    public string name { get; set; }
-    public DateTime latestUpdate { get; set; }
-    public float expectedBalance { get; set; }
-    public float realBalance { get; set; }
+    private int id;
+    private string name;
+    private DateTime latestUpdate;
+    private float expectedBalance;
+    private float realBalance;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public int Id
+    {
+      get { return id; }
+      set
+      {
+        id = value;
+        OnPropertyChanged();
+      }
+    }
+    public string Name
+    {
+      get { return name; }
+      set
+      {
+        name = value;
+        OnPropertyChanged();
+      }
+    }
+    public DateTime LatestUpdate
+    {
+      get { return latestUpdate; }
+      set
+      {
+        latestUpdate = value;
+        OnPropertyChanged();
+      }
+    }
+    public float ExpectedBalance
+    {
+      get { return expectedBalance; }
+      set
+      {
+        expectedBalance = value;
+        OnPropertyChanged();
+      }
+    }
+    public float RealBalance
+    {
+      get { return realBalance; }
+      set
+      {
+        realBalance = value;
+        OnPropertyChanged();
+      }
+    }
+
+    void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      var handler = PropertyChanged;
+      if (handler != null)
+      {
+        handler(this, new PropertyChangedEventArgs(propertyName));
+      }
+    }
   }
 }
