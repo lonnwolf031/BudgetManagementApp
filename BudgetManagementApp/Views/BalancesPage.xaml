@@ -3,16 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:data="clr-namespace:BudgetManagementApp.Data"
              x:Class="BudgetManagementApp.Views.BalancesPage"
+             xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" >
              Title="Balances">
 
-  <ContentPage.Content>
-    <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static local:BalancesViewModel.balances}">
+  <ContentPage.Content><!--{x:Static prefix:typeName.staticMemberName}"-->
+    <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <SwitchCell Text="{Binding name}" On="{Binding isOn}" />
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" Padding="1">
+              <Label Text="{Binding Name}" HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
+              <Label Text="{Binding LatestUpdate, StringFormat='{0:MMMM dd, yyyy}'}"  HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
+              <Label Text="{Binding ExpectedBalance, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
+              <Label Text="{Binding RealBalance, StringFormat='{0:D2}'}" HorizontalOptions="End"  />
+            </StackLayout>
+          </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
+
   </ContentPage.Content>
   
 </ContentPage>

@@ -9,7 +9,7 @@ namespace BudgetManagementApp.ViewModels
 
     static BalancesViewModel()
     {
-      BalancesViewModel.balances = Balances.getBalances();
+      balances = Balances.getBalances();
     }
   }
 }
