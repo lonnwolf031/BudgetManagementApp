@@ -71,6 +71,15 @@ namespace BudgetManagementApp.Models
         OnPropertyChanged();
       }
     }
+    public float AmountReal
+    {
+      get { return amountReal; }
+      set
+      {
+        amountReal = value;
+        OnPropertyChanged();
+      }
+    }
 
     void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {

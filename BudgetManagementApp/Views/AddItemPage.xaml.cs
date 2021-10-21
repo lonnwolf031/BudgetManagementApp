@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace BudgetManagementApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OverviewMonthPage : ContentPage
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class AddItemPage : ContentPage
+  {
+    public AddItemPage()
     {
-        public OverviewMonthPage()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

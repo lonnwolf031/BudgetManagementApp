@@ -5,8 +5,14 @@
              x:Class="BudgetManagementApp.App"
              windows:Application.ImageDirectory="Assets">
     <Application.Resources>
+    <ResourceDictionary>
+      <Style x:Key="mainStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />      
 
-        <!--<DataTemplate x:Key="BudgetItemTemplate">
+      </Style>
+    </ResourceDictionary>
+
+    <!--<DataTemplate x:Key="BudgetItemTemplate">
             <Grid Padding="10"
                   RowDefinitions="Auto,Auto"
                   ColumnDefinitions="Auto,Auto">

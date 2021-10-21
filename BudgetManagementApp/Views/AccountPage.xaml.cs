@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BudgetManagementApp.Data;
+using MySql.Data.MySqlClient;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,9 +26,20 @@ namespace BudgetManagementApp.Views
 
       await Task.Run(() =>
       {
-        // Constants.ConnectionStr = Constants.ConnectionString(connectServer, connectUid, connectpwd, connectDb);
-        Constants.ConnectionStr = Constants.ConnectionString("localhost", "root", "root", connectDb);
+        DBhandler.connectionString = ConnectionString("localhost", "root", "root", "budgetmanagementappdb");
+        var statusabel = new Label { Text = "Connectionstring succeeded" };
       });
+    }
+
+    public static string ConnectionString(string server, string uid, string password, string database)
+    {
+      var connectionstringbuilder = new MySqlConnectionStringBuilder();
+      connectionstringbuilder.Server = server;
+      connectionstringbuilder.UserID = uid;
+      connectionstringbuilder.Password = password;
+      connectionstringbuilder.Database = database;
+      connectionstringbuilder.SslMode = MySqlSslMode.None;
+      return connectionstringbuilder.ToString();
     }
   }
 }

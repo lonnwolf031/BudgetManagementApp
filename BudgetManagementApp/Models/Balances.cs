@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetManagementApp.Data;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -14,11 +15,8 @@ namespace BudgetManagementApp.Models
 
     public static ObservableCollection<Balance> getBalances()
     {
-      ObservableCollection<Balance> balances = new ObservableCollection<Balance>()
-      {
-        new Balance(){ Name = "foo"},
-         new Balance(){ Name = "test"}
-      };
+      ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
+      balances = (ObservableCollection<Balance>)DBhandler.Instance.QueryAllBalances();
       return balances;
     }
   }

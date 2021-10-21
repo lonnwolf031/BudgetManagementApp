@@ -9,15 +9,15 @@
   <ContentPage.Content>
     <ScrollView>
 
-    <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection">
+      <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection"   Margin="20,35,20,25">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <StackLayout Orientation="Horizontal" Padding="1">
-              <Label Text="{Binding Name}" HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
-              <Label Text="{Binding LatestUpdate, StringFormat='{0:MMMM dd, yyyy}'}"  HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
-              <Label Text="{Binding ExpectedBalance, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontSize="18" FontFamily="" />
-              <Label Text="{Binding RealBalance, StringFormat='{0:D2}'}" HorizontalOptions="End"  />
+              <Label Text="{Binding Name}" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding LatestUpdate, StringFormat='LatestUpdate {0:MMMM dd, yyyy}'}"  HorizontalOptions="CenterAndExpand"  />
+                <Label Text="{Binding ExpectedBalance, StringFormat='ExpectedBalance {0:D2}'}"  HorizontalOptions="CenterAndExpand"/>
+                <Label Text="{Binding RealBalance, StringFormat='RealBalance {0:D2}'}" HorizontalOptions="CenterAndExpand"  />
             </StackLayout>
           </ViewCell>
         </DataTemplate>
