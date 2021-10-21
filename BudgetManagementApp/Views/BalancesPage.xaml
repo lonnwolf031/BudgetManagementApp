@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:data="clr-namespace:BudgetManagementApp.Data"
+             xmlns:data="clr-namespace:BudgetManagementApp.Data"
              x:Class="BudgetManagementApp.Views.BalancesPage"
-             xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" >
+             xmlns:local="clr-namespace:BudgetManagementApp;assembly=BudgetManagementApp"
+             xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" 
              Title="Balances">
   <ContentPage.Content>
-  <ScrollView>
+    <ScrollView>
 
     <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection">
       <ListView.ItemTemplate>
@@ -26,4 +27,7 @@
 
   </ScrollView>
   </ContentPage.Content>
+  <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
 </ContentPage>

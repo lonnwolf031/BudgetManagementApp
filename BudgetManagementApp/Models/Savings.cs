@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
@@ -23,10 +22,7 @@ namespace BudgetManagementApp.Models
 
   public class Saving : Expenditure, INotifyPropertyChanged
   {
-
     private string savingGoal;
-
-
 
     public string SavingGoal
     {
@@ -34,18 +30,9 @@ namespace BudgetManagementApp.Models
       set
       {
         savingGoal = value;
-        OnPropertyChanged();
+        base.OnPropertyChanged();
       }
     }
 
-
-    void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-      var handler = base.PropertyChanged;
-      if (handler != null)
-      {
-        handler(this, new PropertyChangedEventArgs(propertyName));
-      }
-    }
   }
 }

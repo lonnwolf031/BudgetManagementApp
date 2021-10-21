@@ -11,6 +11,7 @@ namespace BudgetManagementApp.Views
     public BalancesPage()
     {
       InitializeComponent();
+      listView.ItemSelected += listSelection;
     }
 
     protected async override void OnAppearing()

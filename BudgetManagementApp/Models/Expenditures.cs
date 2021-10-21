@@ -91,7 +91,7 @@ namespace BudgetManagementApp.Models
       }
     }
 
-    void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
       var handler = PropertyChanged;
       if (handler != null)
