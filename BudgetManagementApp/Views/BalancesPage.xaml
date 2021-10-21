@@ -5,8 +5,9 @@
              x:Class="BudgetManagementApp.Views.BalancesPage"
              xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" >
              Title="Balances">
+  <ContentPage.Content>
+  <ScrollView>
 
-  <ContentPage.Content><!--{x:Static prefix:typeName.staticMemberName}"-->
     <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection">
       <ListView.ItemTemplate>
         <DataTemplate>
@@ -22,6 +23,7 @@
       </ListView.ItemTemplate>
     </ListView>
 
+
+  </ScrollView>
   </ContentPage.Content>
-  
 </ContentPage>
