@@ -16,7 +16,10 @@ namespace BudgetManagementApp.Models
     public static ObservableCollection<Balance> getBalances()
     {
       ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
-      balances = (ObservableCollection<Balance>)DBhandler.Instance.QueryAllBalances();
+
+      balances = DBhandler.Instance.GetAllBalances();
+
+
       return balances;
     }
   }

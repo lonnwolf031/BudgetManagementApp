@@ -30,14 +30,6 @@ namespace BudgetManagementApp
       Routes.Add("Predictions", typeof(PredictionsPage));
       Routes.Add("Settings", typeof(SettingsPage));
       Routes.Add("Overview", typeof(OverviewPage));
-      //Routes.Add("overviewhouseholdpage", typeof(OverviewHouseholdPage));
-      //Routes.Add("overviewyearpage", typeof(OverviewYearPage));
-      ////Routes.Add("monkeydetails", typeof(MonkeyDetailPage));
-      //Routes.Add("beardetails", typeof(BearDetailPage));
-      //Routes.Add("catdetails", typeof(CatDetailPage));
-      //Routes.Add("dogdetails", typeof(DogDetailPage));
-      //Routes.Add("elephantdetails", typeof(ElephantDetailPage));
-
       foreach (var item in Routes)
       {
         Routing.RegisterRoute(item.Key, item.Value);

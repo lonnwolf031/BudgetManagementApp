@@ -57,16 +57,40 @@ namespace BudgetManagementApp.Data
       }
     }
 
-    public ObservableCollection<Balance> QueryAllBalances()
+
+
+    public ObservableCollection<Balance> GetAllBalances()
     {
-      using (var cn = new MySqlConnection(connectionString))
+      var balances = new ObservableCollection<Balance>();
+      var balance = new Balance();
+      try
       {
-        var sql = "select name, latest_update, expected_balance, real_balance  from balances";
-        var result = cn.Query<Balance>(sql);
-        Console.WriteLine(result.ToString());
-        var balances = new ObservableCollection<Balance>(result);
-        return balances;
+        using (var cn = new MySqlConnection(connectionString))
+        {
+          using (MySqlCommand cmd = cn.CreateCommand())
+          {
+            cmd.CommandText = "SELECT name, latest_update, expected_balance, real_balance FROM balances";
+            cn.Open();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+              int retrievedValue = 0;
+              if (reader.HasRows)
+              {
+                while (reader.Read())
+                {
+                  balance.Name = (string)reader.GetValue(0);
+                  balance.LatestUpdate = (DateTime)reader.GetValue(1);
+                  balance.ExpectedBalance = (float)reader.GetValue(2);
+                  balance.RealBalance = (float)reader.GetValue(3);
+                  balances.Add(balance);
+                }
+              }
+            }
+          }
+        }
       }
+      catch { }
+      return balances;
     }
   }
 

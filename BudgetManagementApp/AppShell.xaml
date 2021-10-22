@@ -29,36 +29,7 @@
             <Setter Property="Shell.BackgroundColor"
                     Value="#039BE6" />
         </Style>
-        <Style x:Key="Shell2"
-               TargetType="Element"
-               BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="Shell.BackgroundColor"
-                    Value="#689F39" />
-        </Style>
-        <Style x:Key="Shell3"
-               TargetType="Element"
-               BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="Shell.BackgroundColor"
-                    Value="#ED3B3B" />
-        </Style>
-        <Style x:Key="Shell4"
-               TargetType="Element"
-               BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="Shell.BackgroundColor"
-                    Value="#546DFE" />
-        </Style>
-        <Style x:Key="AboutShell"
-               TargetType="Element"
-               BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="Shell.BackgroundColor"
-                    Value="#FFA701" />
-        </Style>
-        <Style x:Key="SettingsShell"
-               TargetType="Element"
-               BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="Shell.BackgroundColor"
-                    Value="#546DFE" />
-        </Style>
+      
     </Shell.Resources>
 
     <Shell.FlyoutHeader>
@@ -111,9 +82,6 @@
                   Icon="info.png"
                   ContentTemplate="{DataTemplate views:AboutPage}" />
 
-    <!--<MenuItem Text="Help"
-              IconImageSource="help.png"
-              Command="{Binding HelpCommand}"
-              CommandParameter="https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />-->
+
 
 </Shell>

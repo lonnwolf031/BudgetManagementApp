@@ -1,4 +1,5 @@
 ﻿using BudgetManagementApp.Models;
+using System;
 using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.ViewModels
@@ -9,7 +10,14 @@ namespace BudgetManagementApp.ViewModels
 
     static BalancesViewModel()
     {
-      balances = Balances.getBalances();
+      try
+      {
+        balances = Balances.getBalances();
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.ToString());
+      }
     }
   }
 }
