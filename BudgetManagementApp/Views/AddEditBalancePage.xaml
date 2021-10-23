@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:BudgetManagementApp.Views"
+             x:Class="BudgetManagementApp.Views.AddEditBalancePage">
+    <ContentPage.Content>
+      <ScrollView>
+
+      <StackLayout Margin="20,35,20,25">
+        <Label Text="Enter name:" />
+        <Entry x:Name="entryName"/>
+        <Label Text="Enter date of latest update:" />
+        <DatePicker MinimumDate="01/01/2018"
+            MaximumDate="12/31/2018"
+            Date="06/21/2018" />
+
+        <Label Text="Enter balance:" />
+        <Entry x:Name="entryExp" Keyboard="Numeric">
+          <Entry.Behaviors>
+            <views:NumericValidationBehavior/>
+          </Entry.Behaviors>
+        </Entry>
+        <Button Text="Click to insert/edit"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="OnButtonClicked" />
+      </StackLayout>
+        
+        
+    </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

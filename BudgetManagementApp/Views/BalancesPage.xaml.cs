@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,6 +23,10 @@ namespace BudgetManagementApp.Views
       });
     }
 
+    async void OnButtonAddClicked(object sender, EventArgs args)
+    {
+      await Navigation.PushAsync(new AddEditBalancePage());
+    }
 
     void listSelection(object sender, SelectedItemChangedEventArgs e)
     {

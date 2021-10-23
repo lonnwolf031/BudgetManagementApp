@@ -71,13 +71,13 @@
 
 
         <ShellContent Route="settings"
-                      Style="{StaticResource SettingsShell}"
+                      Style="{StaticResource BaseShell}"
                       Title="Settings"                      
                       ContentTemplate="{DataTemplate views:SettingsPage}" />
     </FlyoutItem>
 
     <ShellContent Route="about"
-                  Style="{StaticResource AboutShell}"
+                  Style="{StaticResource BaseShell}"
                   Title="About"
                   Icon="info.png"
                   ContentTemplate="{DataTemplate views:AboutPage}" />
