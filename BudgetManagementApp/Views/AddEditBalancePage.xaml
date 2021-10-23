@@ -9,12 +9,18 @@
         <Label Text="Enter name:" />
         <Entry x:Name="entryName"/>
         <Label Text="Enter date of latest update:" />
-        <DatePicker MinimumDate="01/01/2018"
+        <DatePicker x:Name="datePicker" MinimumDate="01/01/2018"
             MaximumDate="12/31/2018"
             Date="06/21/2018" />
 
-        <Label Text="Enter balance:" />
-        <Entry x:Name="entryExp" Keyboard="Numeric">
+        <Label x:Name="labelExpBalance" Text="Enter expected balance:" />
+        <Entry x:Name="entryExpBalance" Keyboard="Numeric">
+          <Entry.Behaviors>
+            <views:NumericValidationBehavior/>
+          </Entry.Behaviors>
+        </Entry>
+        <Label x:Name="labelRealBalance" Text="Enter real balance:" />
+        <Entry x:Name="entryRealBalance" Keyboard="Numeric">
           <Entry.Behaviors>
             <views:NumericValidationBehavior/>
           </Entry.Behaviors>

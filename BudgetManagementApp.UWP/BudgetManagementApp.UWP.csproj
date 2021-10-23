@@ -7,8 +7,8 @@
     <ProjectGuid>{73754C6F-1DB5-4BB0-85B3-D85E159C5A57}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xaminals.UWP</RootNamespace>
-    <AssemblyName>Xaminals.UWP</AssemblyName>
+    <RootNamespace>BudgetManagementApp.UWP</RootNamespace>
+    <AssemblyName>BudgetManagementApp.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>

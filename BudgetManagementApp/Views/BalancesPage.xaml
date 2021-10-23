@@ -6,16 +6,15 @@
              xmlns:local="clr-namespace:BudgetManagementApp;assembly=BudgetManagementApp"
              xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" 
              Title="Balances">
-
+  <ScrollView>
   <StackLayout Margin="20,35,20,25">
-    <Button Text="Click to connect"
+
+
+    <Button Text="Click to add item"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="OnButtonAddClicked" />
-  </StackLayout>
-  <ContentPage.Content>
-
-    <ScrollView>
+  
 
       <ListView x:Name="listView" SeparatorVisibility="None" ItemsSource="{x:Static viewmodels:BalancesViewModel.balances}" ItemSelected="listSelection"   Margin="20,35,20,25">
       <ListView.ItemTemplate>
@@ -32,10 +31,9 @@
       </ListView.ItemTemplate>
     </ListView>
 
-
+    </StackLayout>
   </ScrollView>
-  </ContentPage.Content>
-  <ContentPage.ToolbarItems>
-    </ContentPage.ToolbarItems>
+
+ 
 
 </ContentPage>

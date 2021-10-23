@@ -19,6 +19,10 @@ namespace BudgetManagementApp.Views
     public AddEditBalancePage(Balance balance)
     {
       isNewItem = false;
+      entryName.Text = balance.Name;
+      datePicker.Date = balance.LatestUpdate;
+      entryExpBalance.Text = balance.ExpectedBalance.ToString();
+      entryRealBalance.Text = balance.RealBalance.ToString();
     }
 
     async void OnButtonClicked(object sender, EventArgs args)
