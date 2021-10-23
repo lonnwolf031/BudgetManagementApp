@@ -1,5 +1,7 @@
-﻿using BudgetManagementApp.Models;
+﻿using BudgetManagementApp.Data;
+using BudgetManagementApp.Models;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -29,7 +31,14 @@ namespace BudgetManagementApp.Views
     {
       await Task.Run(() =>
       {
-        // do thing
+        Balance balance = new Balance();
+        balance.Name = (string)entryName.Text;
+        balance.LatestUpdate = (DateTime)datePicker.Date;
+        var expBalance;
+
+        balance.ExpectedBalance = float.TryParse(entryExpBalance.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out expBalance);
+        balance.RealBalance = (float)entryRealBalance.Text;
+        DBhandler.Instance.InsertBalance(balance);
       });
     }
   }

@@ -30,9 +30,9 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="Xaminals.UWP.App">
+      EntryPoint="BudgetManagementApp.UWP.App">
       <uap:VisualElements
-        DisplayName="Xaminals.UWP"
+        DisplayName="BudgetManagementApp.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Xaminals.UWP"
