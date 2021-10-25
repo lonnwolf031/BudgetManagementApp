@@ -33,28 +33,26 @@ namespace BudgetManagementApp.Data
 
     public void InsertBalance(Balance balance)
     {
-      try
+      // try
+      // {
+      using (var cn = new MySqlConnection(connectionString))
       {
-        using (var cn = new MySqlConnection(connectionString))
+        using (MySqlCommand cmd = cn.CreateCommand())
         {
-          string SQLcommand = "INSERT INTO balances (id, name, latest_update, expected_balance, real_balance) VALUES(?id, ?name, ?latestupdate, ?expectedbalance, ?realbalance);";
-          using (MySqlCommand cmd = cn.CreateCommand())
-          {
-            cmd.CommandText = "INSERT INTO balances (id, name, latest_update, expected_balance, real_balance)";
-            cn.Open();
-
-            cn.Open();
-
-            cmd.Parameters.Add(new MySqlParameter("?name", balance.Name));
-            cmd.Parameters.Add(new MySqlParameter("?latestupdate", balance.LatestUpdate));
-            cmd.Parameters.Add(new MySqlParameter("?expectedbalance", balance.ExpectedBalance));
-            cmd.Parameters.Add(new MySqlParameter("?realbalance", balance.RealBalance));
-
-            cmd.ExecuteNonQuery();
-          }
+          // cmd.CommandText = "INSERT INTO balances (name, latest_update, expected_balance, real_balance)";
+          cmd.CommandText = "INSERT INTO balances VALUES ( ?id, ?name, ?latest_update, ?expected_balance, ?real_balance)";
+          cn.Open();
+          // ERROR MySqlException: 'Column count doesn't match value count at row 1'
+          cmd.Parameters.Add(new MySqlParameter("?id"default));
+          cmd.Parameters.Add(new MySqlParameter("?name", balance.Name));
+          cmd.Parameters.Add(new MySqlParameter("?latest_update", balance.LatestUpdate));
+          cmd.Parameters.Add(new MySqlParameter("?expected_balance", balance.ExpectedBalance));
+          cmd.Parameters.Add(new MySqlParameter("?real_balance", balance.RealBalance));
+          cmd.ExecuteNonQuery();
         }
       }
-      catch { }
+      //}
+      //catch { }
     }
 
     public Balance GetBalanceByID(int id)

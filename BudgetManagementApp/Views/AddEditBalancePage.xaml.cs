@@ -34,10 +34,11 @@ namespace BudgetManagementApp.Views
         Balance balance = new Balance();
         balance.Name = (string)entryName.Text;
         balance.LatestUpdate = (DateTime)datePicker.Date;
-        var expBalance;
-
-        balance.ExpectedBalance = float.TryParse(entryExpBalance.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out expBalance);
-        balance.RealBalance = (float)entryRealBalance.Text;
+        float expBalance, realBalance;
+        float.TryParse(entryExpBalance.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out expBalance);
+        float.TryParse(entryRealBalance.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out realBalance);
+        balance.ExpectedBalance = expBalance;
+        balance.RealBalance = realBalance;
         DBhandler.Instance.InsertBalance(balance);
       });
     }
