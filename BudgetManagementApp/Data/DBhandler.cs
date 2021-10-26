@@ -8,13 +8,24 @@ namespace BudgetManagementApp.Data
   //TODO make singleton
   public sealed class DBhandler
   {
+    private MySqlConnection connection;
+    public static string connectionString { get; set; }
+
     private static readonly Lazy<DBhandler> lazy = new Lazy<DBhandler>(() => new DBhandler());
 
     public static DBhandler Instance { get { return lazy.Value; } }
 
-    private DBhandler() { }
+    private DBhandler()
+    {
+      Initialize();
+    }
 
-    public static string connectionString { get; set; }
+    private void Initialize()
+    {
+      connection = new MySqlConnection(connectionString);
+    }
+
+
 
     public static bool CheckValidity()
     {
@@ -31,6 +42,46 @@ namespace BudgetManagementApp.Data
 
     }
 
+    private bool OpenConnection()
+    {
+      try
+      {
+        connection.Open();
+        return true;
+      }
+      catch (MySqlException ex)
+      {
+        switch (ex.Number)
+        {
+          case 0:
+            // MessageBox.Show("Kan niet verbinden met de server." + ex.ToString());
+            break;
+
+          case 1045:
+            //MessageBox.Show("Onjuiste gebruikersnaam en wachtwoord combinatie");
+            break;
+          default:
+            //  MessageBox.Show("Er is een probleem bij het verbinden met de server: " + ex.ToString());
+            break;
+        }
+        return false;
+      }
+    }
+
+    private bool CloseConnection()
+    {
+      try
+      {
+        connection.Close();
+        return true;
+      }
+      catch (MySqlException ex)
+      {
+        MessageBox.Show(ex.Message);
+        return false;
+      }
+    }
+
     public void InsertBalance(Balance balance)
     {
       // try
@@ -39,11 +90,8 @@ namespace BudgetManagementApp.Data
       {
         using (MySqlCommand cmd = cn.CreateCommand())
         {
-          // cmd.CommandText = "INSERT INTO balances (name, latest_update, expected_balance, real_balance)";
-          cmd.CommandText = "INSERT INTO balances VALUES ( ?id, ?name, ?latest_update, ?expected_balance, ?real_balance)";
+          cmd.CommandText = "INSERT INTO balances VALUES (  id, ?name, ?latest_update, ?expected_balance, ?real_balance)";
           cn.Open();
-          // ERROR MySqlException: 'Column count doesn't match value count at row 1'
-          cmd.Parameters.Add(new MySqlParameter("?id"default));
           cmd.Parameters.Add(new MySqlParameter("?name", balance.Name));
           cmd.Parameters.Add(new MySqlParameter("?latest_update", balance.LatestUpdate));
           cmd.Parameters.Add(new MySqlParameter("?expected_balance", balance.ExpectedBalance));

@@ -1,11 +1,53 @@
 ﻿using BudgetManagementApp.Data;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
+
+  public class BalanceRepository : IRepository<Balance>
+  {
+    ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
+
+    public void DeleteItem(int itemID)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Dispose()
+    {
+      throw new NotImplementedException();
+    }
+
+    public IEnumerable<Balance> GetItems()
+    {
+      balances = DBhandler.Instance.GetAllBalances();
+      return balances;
+    }
+
+    public Balance GetTByID(int itemId)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void InsertItem(Balance item)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Save()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void UpdateItem(Balance item)
+    {
+      throw new NotImplementedException();
+    }
+  }
 
   public static class Balances
   {
@@ -16,10 +58,7 @@ namespace BudgetManagementApp.Models
     public static ObservableCollection<Balance> getBalances()
     {
       ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
-
       balances = DBhandler.Instance.GetAllBalances();
-
-
       return balances;
     }
   }
