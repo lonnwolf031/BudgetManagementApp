@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Data
 {
-  //TODO make singleton
   public sealed class DBhandler
   {
     private MySqlConnection connection;
@@ -42,44 +41,22 @@ namespace BudgetManagementApp.Data
 
     }
 
-    private bool OpenConnection()
+
+    public void RemoveBalance(int id)
     {
       try
       {
-        connection.Open();
-        return true;
-      }
-      catch (MySqlException ex)
-      {
-        switch (ex.Number)
+        using (var cn = new MySqlConnection(connectionString))
         {
-          case 0:
-            // MessageBox.Show("Kan niet verbinden met de server." + ex.ToString());
-            break;
-
-          case 1045:
-            //MessageBox.Show("Onjuiste gebruikersnaam en wachtwoord combinatie");
-            break;
-          default:
-            //  MessageBox.Show("Er is een probleem bij het verbinden met de server: " + ex.ToString());
-            break;
+          using (MySqlCommand cmd = cn.CreateCommand())
+          {
+            cmd.CommandText = "DELETE FROM balances WHERE id = ?id";
+            cmd.Parameters.Add(new MySqlParameter("?id", id));
+            cmd.ExecuteNonQuery();
+          }
         }
-        return false;
       }
-    }
-
-    private bool CloseConnection()
-    {
-      try
-      {
-        connection.Close();
-        return true;
-      }
-      catch (MySqlException ex)
-      {
-        MessageBox.Show(ex.Message);
-        return false;
-      }
+      catch { }
     }
 
     public void InsertBalance(Balance balance)

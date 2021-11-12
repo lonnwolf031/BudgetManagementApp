@@ -1,67 +1,25 @@
-﻿using BudgetManagementApp.Data;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace BudgetManagementApp.Models
 {
 
-  public class BalanceRepository : IRepository<Balance>
-  {
-    ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
 
-    public void DeleteItem(int itemID)
-    {
-      throw new NotImplementedException();
-    }
 
-    public void Dispose()
-    {
-      throw new NotImplementedException();
-    }
+  //public static class Balances
+  //{
+  //  static Balances()
+  //  {
+  //  }
 
-    public IEnumerable<Balance> GetItems()
-    {
-      balances = DBhandler.Instance.GetAllBalances();
-      return balances;
-    }
-
-    public Balance GetTByID(int itemId)
-    {
-      throw new NotImplementedException();
-    }
-
-    public void InsertItem(Balance item)
-    {
-      throw new NotImplementedException();
-    }
-
-    public void Save()
-    {
-      throw new NotImplementedException();
-    }
-
-    public void UpdateItem(Balance item)
-    {
-      throw new NotImplementedException();
-    }
-  }
-
-  public static class Balances
-  {
-    static Balances()
-    {
-    }
-
-    public static ObservableCollection<Balance> getBalances()
-    {
-      ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
-      balances = DBhandler.Instance.GetAllBalances();
-      return balances;
-    }
-  }
+  //  public static ObservableCollection<Balance> getBalances()
+  //  {
+  //    ObservableCollection<Balance> balances = new ObservableCollection<Balance>();
+  //    balances = DBhandler.Instance.GetAllBalances();
+  //    return balances;
+  //  }
+  //}
 
   public class Balance : INotifyPropertyChanged
   {
