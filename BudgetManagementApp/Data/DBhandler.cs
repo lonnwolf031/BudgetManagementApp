@@ -5,6 +5,9 @@ using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Data
 {
+  /// <summary>
+  /// Singleton DBhandler class
+  /// </summary>
   public sealed class DBhandler
   {
     private MySqlConnection connection;
@@ -16,16 +19,14 @@ namespace BudgetManagementApp.Data
 
     private DBhandler()
     {
-      Initialize();
-    }
-
-    private void Initialize()
-    {
-      connection = new MySqlConnection(connectionString);
     }
 
 
 
+    /// <summary>
+    /// check validity of database (correct tables, columns etc)
+    /// </summary>
+    /// <returns></returns>
     public static bool CheckValidity()
     {
       return true;
@@ -35,21 +36,24 @@ namespace BudgetManagementApp.Data
     {
 
     }
-
+    /// <summary>
+    /// General db backup
+    /// </summary>
     public static void Backup()
     {
 
     }
 
+    public void UpdateBalance(Balance balance)
+    {
+
+    }
 
     public void RemoveBalance(int id)
     {
-      try
-      {
-        using (var cn = new MySqlConnection(connectionString))
-        {
-          using (MySqlCommand cmd = cn.CreateCommand())
-          {
+      try {
+        using (var cn = new MySqlConnection(connectionString)) {
+          using (MySqlCommand cmd = cn.CreateCommand()) {
             cmd.CommandText = "DELETE FROM balances WHERE id = ?id";
             cmd.Parameters.Add(new MySqlParameter("?id", id));
             cmd.ExecuteNonQuery();
@@ -63,10 +67,8 @@ namespace BudgetManagementApp.Data
     {
       // try
       // {
-      using (var cn = new MySqlConnection(connectionString))
-      {
-        using (MySqlCommand cmd = cn.CreateCommand())
-        {
+      using (var cn = new MySqlConnection(connectionString)) {
+        using (MySqlCommand cmd = cn.CreateCommand()) {
           cmd.CommandText = "INSERT INTO balances VALUES (  id, ?name, ?latest_update, ?expected_balance, ?real_balance)";
           cn.Open();
           cmd.Parameters.Add(new MySqlParameter("?name", balance.Name));
@@ -83,21 +85,15 @@ namespace BudgetManagementApp.Data
     public Balance GetBalanceByID(int id)
     {
       Balance balance = new Balance();
-      try
-      {
-        using (var cn = new MySqlConnection(connectionString))
-        {
-          using (MySqlCommand cmd = cn.CreateCommand())
-          {
+      try {
+        using (var cn = new MySqlConnection(connectionString)) {
+          using (MySqlCommand cmd = cn.CreateCommand()) {
             cmd.CommandText = "SELECT name, latest_update, expected_balance, real_balance  FROM balances WHERE id = @id";
             cn.Open();
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
+            using (MySqlDataReader reader = cmd.ExecuteReader()) {
               //int retrievedValue = 0;
-              if (reader.HasRows)
-              {
-                while (reader.Read())
-                {
+              if (reader.HasRows) {
+                while (reader.Read()) {
                   balance.Name = (string)reader.GetValue(0);
                   balance.LatestUpdate = (DateTime)reader.GetValue(1);
                   balance.ExpectedBalance = (float)reader.GetValue(2);
@@ -116,21 +112,15 @@ namespace BudgetManagementApp.Data
     {
       var balances = new ObservableCollection<Balance>();
       var balance = new Balance();
-      try
-      {
-        using (var cn = new MySqlConnection(connectionString))
-        {
-          using (MySqlCommand cmd = cn.CreateCommand())
-          {
+      try {
+        using (var cn = new MySqlConnection(connectionString)) {
+          using (MySqlCommand cmd = cn.CreateCommand()) {
             cmd.CommandText = "SELECT name, latest_update, expected_balance, real_balance FROM balances";
             cn.Open();
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
+            using (MySqlDataReader reader = cmd.ExecuteReader()) {
               //int retrievedValue = 0;
-              if (reader.HasRows)
-              {
-                while (reader.Read())
-                {
+              if (reader.HasRows) {
+                while (reader.Read()) {
                   balance.Name = (string)reader.GetValue(0);
                   balance.LatestUpdate = (DateTime)reader.GetValue(1);
                   balance.ExpectedBalance = (float)reader.GetValue(2);

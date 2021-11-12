@@ -4,15 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace BudgetManagementApp.Models
 {
-  public interface IRepository<T>
-  {
-    ObservableCollection<T> Items { get; }
-    T GetTByID(int itemId);
-    void InsertItem(T item);
-    void DeleteItem(int itemID);
-    void UpdateItem(T item);
 
-  }
 
   public class BalanceRepository : IRepository<Balance>
   {
@@ -25,15 +17,13 @@ namespace BudgetManagementApp.Models
 
     public Balance GetTByID(int itemId)
     {
-      throw new NotImplementedException();
+      return DBhandler.Instance.GetBalanceByID(itemId);
     }
 
     public void InsertItem(Balance item)
     {
       DBhandler.Instance.InsertBalance(item);
-      balances.Add(item);
     }
-
 
 
     public void UpdateItem(Balance item)
