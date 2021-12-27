@@ -46,7 +46,19 @@ namespace BudgetManagementApp.Data
 
     public void UpdateBalance(Balance balance)
     {
-
+      using (var cn = new MySqlConnection(connectionString)) {
+        using (MySqlCommand cmd = cn.CreateCommand()) {
+          // "UPDATE Inventory SET Inventorynumber=@Inventorynumber,Inventory_Name=@Inventory_Name, Quantity =@Quantity ,Location =@Location,Category =@Category WHERE Inventorynumber =@Inventorynumber";
+          cmd.CommandText = "UPDATE balances SET  (  ?id, ?name, ?latest_update, ?expected_balance, ?real_balance) WHERE id = ?id";
+          cn.Open();
+          cmd.Parameters.Add(new MySqlParameter("?id", balance.Id));
+          cmd.Parameters.Add(new MySqlParameter("?name", balance.Name));
+          cmd.Parameters.Add(new MySqlParameter("?latest_update", balance.LatestUpdate));
+          cmd.Parameters.Add(new MySqlParameter("?expected_balance", balance.ExpectedBalance));
+          cmd.Parameters.Add(new MySqlParameter("?real_balance", balance.RealBalance));
+          cmd.ExecuteNonQuery();
+        }
+      }
     }
 
     public void RemoveBalance(int id)

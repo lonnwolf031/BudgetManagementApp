@@ -2,16 +2,19 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BudgetManagementApp.ViewModels;
 
 namespace BudgetManagementApp.Views
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class BalancesPage : ContentPage
   {
-
+    private BalancesViewModel balancesViewModel;
     public BalancesPage()
     {
       InitializeComponent();
+      balancesViewModel = new BalancesViewModel();
+      this.BindingContext = balancesViewModel; 
       listView.ItemSelected += listSelection;
     }
 
