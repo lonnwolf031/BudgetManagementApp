@@ -17,7 +17,7 @@
 
 
             <ListView x:Name="listView" SeparatorVisibility="None" Margin="20,35,20,25" ItemsSource="{Binding balances}" ItemSelected="listSelection"  >
-                <!--ItemsSource="{x:Name viewmodels:BalancesViewModel.balances}" --> 
+                   <!--ItemsSource="{x:Name viewmodels:BalancesViewModel.balances}" --> 
                   
                 
                 <ListView.ItemTemplate>
