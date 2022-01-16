@@ -8,16 +8,20 @@
              Title="Balances">
   <ScrollView>
   <StackLayout Margin="20,35,20,25">
+            <StackLayout.BindingContext>
+                <viewmodels:BalancesViewModel />
+            </StackLayout.BindingContext>
 
 
-    <Button Text="Click to add item"
+            <Button Text="Click to add item"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="OnButtonAddClicked" />
 
 
-            <ListView x:Name="listView" SeparatorVisibility="None" Margin="20,35,20,25" ItemsSource="{Binding balances}" ItemSelected="listSelection"  >
-                   <!--ItemsSource="{x:Name viewmodels:BalancesViewModel.balances}" --> 
+            <ListView x:Name="listView" SeparatorVisibility="None" Margin="20,35,20,25" ItemsSource="{Binding Items}"  ItemSelected="listSelection"  >
+                   <!--ItemsSource="{x:Name viewmodels:BalancesViewModel.balances}" -->
+                <!-- ItemsSource="{Binding balances}" -->
                   
                 
                 <ListView.ItemTemplate>
