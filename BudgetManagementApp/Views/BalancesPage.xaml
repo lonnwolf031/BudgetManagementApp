@@ -20,11 +20,8 @@
 
 
             <ListView x:Name="listView" SeparatorVisibility="None" Margin="20,35,20,25" ItemsSource="{Binding Items}"  ItemSelected="listSelection"  >
-                   <!--ItemsSource="{x:Name viewmodels:BalancesViewModel.balances}" -->
-                <!-- ItemsSource="{Binding balances}" -->
-                  
-                
-                <ListView.ItemTemplate>
+                             
+        <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <StackLayout Orientation="Horizontal" Padding="1">

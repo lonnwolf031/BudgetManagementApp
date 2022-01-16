@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BudgetManagementApp.ViewModels;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using BudgetManagementApp.ViewModels;
 
 namespace BudgetManagementApp.Views
 {
@@ -14,8 +14,13 @@ namespace BudgetManagementApp.Views
     {
       InitializeComponent();
       balancesViewModel = new BalancesViewModel();
-      this.BindingContext = balancesViewModel; 
+      this.BindingContext = balancesViewModel;
       listView.ItemSelected += listSelection;
+
+      listView.ItemTemplate = new DataTemplate(typeof(EntryCell));
+      listView.ItemTemplate.SetBinding(EntryCell.LabelProperty, "comment");
+      listView.ItemTemplate.SetBinding(EntryCell.TextProperty, "name");
+      Content = listView;
     }
 
     protected async override void OnAppearing()
