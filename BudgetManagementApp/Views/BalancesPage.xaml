@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BudgetManagementApp;assembly=BudgetManagementApp"
              xmlns:viewmodels="clr-namespace:BudgetManagementApp.ViewModels" 
              Title="Balances">
-  <ScrollView>
+  <ScrollView> <!--
   <StackLayout Margin="20,35,20,25">
             <StackLayout.BindingContext>
                 <viewmodels:BalancesViewModel />
@@ -35,7 +35,7 @@
       </ListView.ItemTemplate>
     </ListView>
 
-    </StackLayout>
+    </StackLayout> -->
   </ScrollView>
 
  

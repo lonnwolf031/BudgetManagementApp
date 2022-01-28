@@ -1,0 +1,6 @@
+﻿
+
+
+balances viewmodel
+
+https://social.msdn.microsoft.com/Forums/en-US/fdf80dae-f2d9-4e03-aad5-1e06b309a6bf/c-code-to-design-listview?forum=xamarinforms
